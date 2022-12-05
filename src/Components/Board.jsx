@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Info from './Info'
 import Row from './Row'
 
@@ -9,11 +9,36 @@ export default function Board() {
     const cellIDs = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     const [nextPlayer, setNextPlayer] = useState('x')
     const [board, setBoard] = useState(Array(9).fill(''))
+    const [xPositions, setXpositions] = useState([])
+    const [OPositions, setOpositions] = useState([])
     const [winner, setWinner] = useState('')
 
+    useEffect(() => {
+        function checkWinner() {
+            if (xPositions.length >= 3) {
+                winPostions.map((item, index) => {
+                    let matchX = xPositions.filter(element => winPostions[index].includes(element))
+                    if (matchX.length === 3) {
+                        setWinner('X')
+                    }
+                })
+            }
+            if (OPositions.length >= 3) {
+                winPostions.map((item, index) => {
+                    let matchO = OPositions.filter(element => winPostions[index].includes(element))
+                    if (matchO.length === 3) {
+                        setWinner('O')
+                    }
+                })
+            }
+        }
+        checkWinner()
+    }, [board])
 
     function handleNewGame() {
         setBoard(Array(9).fill(''))
+        setXpositions([])
+        setOpositions([])
         setWinner('')
         setNextPlayer('x')
     }
@@ -25,11 +50,11 @@ export default function Board() {
                 let newBoard = [...board]
                 newBoard[targetCell] = nextPlayer
                 if (nextPlayer === 'o') {
-                    // setOpositions([...OPositions, targetCell])
+                    setOpositions([...OPositions, targetCell])
                     setNextPlayer('x')
                 }
                 else {
-                    // setXpositions([...xPositions, targetCell])
+                    setXpositions([...xPositions, targetCell])
                     setNextPlayer('o')
                 }
                 setBoard(newBoard)
