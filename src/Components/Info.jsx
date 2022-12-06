@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-export default function Info({ nextPlayer, newGame, nextGame, games, results }) {
+export default function Info({ nextPlayer, newGame, nextGame, games, results, disabledNew, disabledNext }) {
     return (
         <div className='info'>
             <h2>Tic Tac Toe</h2>
             <div className='btn-container'>
                 <button className='game-btn new-game' onClick={newGame}>New game</button>
-                <button className='game-btn next-game' onClick={nextGame}>Next game</button>
+                <button className='game-btn next-game' disabled={disabledNext} onClick={nextGame}>Next game</button>
             </div>
             <div className='game-info'>
                 <p className='best-of'>Best of {games}</p>

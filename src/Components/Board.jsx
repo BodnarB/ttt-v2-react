@@ -14,12 +14,12 @@ export default function Board() {
     const [winner, setWinner] = useState('')
     const [results, setResults] = useState([])
     const [finalWinner, setFinalWinner] = useState('')
+    const [disabledButton, setDisabledButton] = useState(false)
 
     useEffect(() => {
         if (winner !== '' && winner !== '-') {
             setResults([...results, winner])
         }
-
     }, [winner])
 
     useEffect(() => {
@@ -31,8 +31,8 @@ export default function Board() {
                 setFinalWinner('o')
             }
         }
-    }, [results])
 
+    }, [results])
 
     useEffect(() => {
         function checkWinner() {
@@ -62,6 +62,13 @@ export default function Board() {
         checkWinner()
     }, [board])
 
+    useEffect(() => {
+        if (finalWinner !== '') {
+            setDisabledButton(true)
+            setNextPlayer('-')
+        }
+    },[finalWinner])
+
     function handleNewGame() {
         setBoard(Array(9).fill(''))
         setXpositions([])
@@ -70,6 +77,7 @@ export default function Board() {
         setWinner('')
         setNextPlayer('x')
         setFinalWinner('')
+        setDisabledButton(false)
     }
 
     function handleNextGame() {
@@ -99,8 +107,6 @@ export default function Board() {
         }
     }
 
-
-
     return (
         <>
             <Info
@@ -108,6 +114,7 @@ export default function Board() {
                 newGame={handleNewGame}
                 nextGame={handleNextGame}
                 games={BO}
+                disabledNext={disabledButton}
                 results={results.map((item) => <p key={uuidv4()}>{item}</p>)}
             />
             <div className='board'>
