@@ -3,7 +3,6 @@ import Info from './Info'
 import Row from './Row'
 import { v4 as uuidv4 } from 'uuid';
 
-
 export default function Board() {
     const winPostions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     const [nextPlayer, setNextPlayer] = useState('x')
@@ -61,7 +60,6 @@ export default function Board() {
                         }
                     })
                 }
-
             }
         }
         checkWinner()
@@ -122,25 +120,27 @@ export default function Board() {
                 disabledNext={disabledButton}
                 results={results.map((item) => <p key={uuidv4()}>{item}</p>)}
             />
-            <div className='board'>
-                <Row handleClick={handleClick}
-                    cell1ID={0} cell1Content={board[0]}
-                    cell2ID={1} cell2Content={board[1]}
-                    cell3ID={2} cell3Content={board[2]}
-                />
-                <Row handleClick={handleClick}
-                    cell1ID={3} cell1Content={board[3]}
-                    cell2ID={4} cell2Content={board[4]}
-                    cell3ID={5} cell3Content={board[5]}
-                />
-                <Row handleClick={handleClick}
-                    cell1ID={6} cell1Content={board[6]}
-                    cell2ID={7} cell2Content={board[7]}
-                    cell3ID={8} cell3Content={board[8]}
-                />
+            <div className='board-container'>
+                <div className='board'>
+                    <Row handleClick={handleClick}
+                        cell1ID={0} cell1Content={board[0]}
+                        cell2ID={1} cell2Content={board[1]}
+                        cell3ID={2} cell3Content={board[2]}
+                    />
+                    <Row handleClick={handleClick}
+                        cell1ID={3} cell1Content={board[3]}
+                        cell2ID={4} cell2Content={board[4]}
+                        cell3ID={5} cell3Content={board[5]}
+                    />
+                    <Row handleClick={handleClick}
+                        cell1ID={6} cell1Content={board[6]}
+                        cell2ID={7} cell2Content={board[7]}
+                        cell3ID={8} cell3Content={board[8]}
+                    />
+                </div>
+                {winner === '-' && <p className='winner'>No winner</p>}
+                {finalWinner !== '' && <p className='final-winner'>Final winner: {finalWinner}</p>}
             </div>
-            {winner === '-' && <p className='winner'>No winner</p>}
-            {finalWinner !== '' && <p className='final-winner'>Final winner: {finalWinner}</p>}
         </>
     )
 }
