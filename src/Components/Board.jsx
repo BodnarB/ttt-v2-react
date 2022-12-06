@@ -9,7 +9,7 @@ export default function Board() {
     const [board, setBoard] = useState(Array(9).fill(''))
     const [xPositions, setXpositions] = useState([])
     const [OPositions, setOpositions] = useState([])
-    const [BO, setBO] = useState(3)
+    const [BO, setBO] = useState(3)  // This will be used later
     const [winner, setWinner] = useState('')
     const [results, setResults] = useState([])
     const [finalWinner, setFinalWinner] = useState('')
@@ -45,7 +45,7 @@ export default function Board() {
                     setWinner('-')
                 }
                 if (xPositions.length >= 3) {
-                    winPostions.map((item, index) => {
+                    winPostions.forEach((item, index) => {
                         let matchX = xPositions.filter(element => winPostions[index].includes(element))
                         if (matchX.length === 3) {
                             setWinner('x')
@@ -53,7 +53,7 @@ export default function Board() {
                     })
                 }
                 if (OPositions.length >= 3) {
-                    winPostions.map((item, index) => {
+                    winPostions.forEach((item, index) => {
                         let matchO = OPositions.filter(element => winPostions[index].includes(element))
                         if (matchO.length === 3) {
                             setWinner('o')
