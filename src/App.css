@@ -8,30 +8,44 @@ body {
     user-select: none;
     font-family: 'Montserrat', sans-serif;
     background-color: #2F4858;
+    letter-spacing: 0.9px;
 }
 
 .info {
-    background-color: black;
+    background-color: rgb(14, 14, 14);
     color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    gap: 2rem;
+}
+
+.btn-container {
+    display: flex;
     gap: 1rem;
 }
 
-.new-game-btn {
+.game-btn {
     font-family: 'Montserrat', sans-serif;
-    background-color: #b7ff42;
+    background-color: #131313;
+    color: #B7FF42;
     font-size: 1rem;
     font-weight: 600;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 2rem;
     transition-duration: 0.25s;
+    border: 2px solid #b7ff42;
 }
 
-.new-game-btn:hover {
-    background-color: rgb(202, 255, 159);
+.next-game {
+    background-color: #1a301c;
+}
+
+.game-btn:hover {
+    background-color: rgb(15, 27, 5);
+    color: #ffffff;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition-duration: 0.25s;
     padding: 0.5rem 1rem;
@@ -48,7 +62,6 @@ body {
 
 .next-player {
     text-transform: uppercase;
-    letter-spacing: 0.9px;
 }
 
 .row {
@@ -62,12 +75,13 @@ body {
 
 .cell {
     border-right: 1px solid #B7FF42;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition-duration: 0.3s;
+    text-transform: uppercase;
 }
 
 .cell:last-of-type {
@@ -80,6 +94,24 @@ body {
     transition-duration: 0.3s;
 }
 
+.game-info {
+    border: 2px solid #2f485885;
+    overflow: hidden;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+}
+
+.best-of {
+    background-color: #1e303b;
+    padding: 0.6rem 1rem;
+}
+
 .winner {
     background-color: black;
     color: white;
@@ -88,4 +120,25 @@ body {
     width: fit-content;
     margin: 0 auto;
     border-radius: 0.3rem;
+}
+
+.results-list {
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    min-height: 40px;
+    border-top: 1px solid #ffffff2d;
+}
+
+.final-winner {
+    margin: 0 auto;
+    background-color: #181818be;
+    width: fit-content;
+    color: #B7FF42;
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0 0 0.3rem 0.3rem;
 }

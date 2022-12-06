@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Info from './Info'
 import Row from './Row'
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function Board() {
@@ -9,34 +10,69 @@ export default function Board() {
     const [board, setBoard] = useState(Array(9).fill(''))
     const [xPositions, setXpositions] = useState([])
     const [OPositions, setOpositions] = useState([])
+    const [BO, setBO] = useState(3)
     const [winner, setWinner] = useState('')
+    const [results, setResults] = useState([])
+    const [finalWinner, setFinalWinner] = useState('')
+
+    useEffect(() => {
+        if (winner !== '' && winner !== '-') {
+            setResults([...results, winner])
+        }
+
+    }, [winner])
+
+    useEffect(() => {
+        if (results.length >= 2) {
+            if (results.filter(res => res === 'x').length === 2) {
+                setFinalWinner('x')
+            }
+            else if (results.filter(res => res === 'o').length === 2) {
+                setFinalWinner('o')
+            }
+        }
+    }, [results])
+
 
     useEffect(() => {
         function checkWinner() {
-            if (!board.includes('')) {
-                setWinner('-')
-            }
-            if (xPositions.length >= 3) {
-                winPostions.map((item, index) => {
-                    let matchX = xPositions.filter(element => winPostions[index].includes(element))
-                    if (matchX.length === 3) {
-                        setWinner('x')
-                    }
-                })
-            }
-            if (OPositions.length >= 3) {
-                winPostions.map((item, index) => {
-                    let matchO = OPositions.filter(element => winPostions[index].includes(element))
-                    if (matchO.length === 3) {
-                        setWinner('o')
-                    }
-                })
+            if (finalWinner === '') {
+                if (!board.includes('')) {
+                    setWinner('-')
+                }
+                if (xPositions.length >= 3) {
+                    winPostions.map((item, index) => {
+                        let matchX = xPositions.filter(element => winPostions[index].includes(element))
+                        if (matchX.length === 3) {
+                            setWinner('x')
+                        }
+                    })
+                }
+                if (OPositions.length >= 3) {
+                    winPostions.map((item, index) => {
+                        let matchO = OPositions.filter(element => winPostions[index].includes(element))
+                        if (matchO.length === 3) {
+                            setWinner('o')
+                        }
+                    })
+                }
+
             }
         }
         checkWinner()
     }, [board])
 
     function handleNewGame() {
+        setBoard(Array(9).fill(''))
+        setXpositions([])
+        setOpositions([])
+        setResults([])
+        setWinner('')
+        setNextPlayer('x')
+        setFinalWinner('')
+    }
+
+    function handleNextGame() {
         setBoard(Array(9).fill(''))
         setXpositions([])
         setOpositions([])
@@ -63,9 +99,17 @@ export default function Board() {
         }
     }
 
+
+
     return (
         <>
-            <Info nextPlayer={nextPlayer} newGame={handleNewGame} />
+            <Info
+                nextPlayer={nextPlayer}
+                newGame={handleNewGame}
+                nextGame={handleNextGame}
+                games={BO}
+                results={results.map((item) => <p key={uuidv4()}>{item}</p>)}
+            />
             <div className='board'>
                 <Row handleClick={handleClick}
                     cell1ID={0} cell1Content={board[0]}
@@ -83,7 +127,9 @@ export default function Board() {
                     cell3ID={8} cell3Content={board[8]}
                 />
             </div>
-            {winner !== '' && <p className='winner'>The winner: {winner}</p>}
+            {winner !== '' && <p className='winner'>Last round winner: {winner}</p>}
+            {finalWinner !== '' && <p className='final-winner'>Final winner: {finalWinner}</p>}
+
         </>
     )
 }
