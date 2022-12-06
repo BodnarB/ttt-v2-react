@@ -18,7 +18,7 @@ body {
 }
 
 .App {
-    height: 68vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -112,7 +112,7 @@ body {
 
 .cell {
     border-right: 1px solid #b7ff42bd;
-    background-color: #1e303b;
+    background-color: #121e26;
     height: 55px;
     width: 55px;
     display: flex;
@@ -189,8 +189,6 @@ footer {
     background-color: #000000;
     color: #ffffffbd;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     font-weight: 300;
     font-variant: small-caps;
