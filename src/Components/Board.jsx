@@ -33,9 +33,6 @@ export default function Board() {
                 setFinalWinner('o')
             }
         }
-        if (results.length === 0) {
-            setDisabledButton(true)
-        }
     }, [results])
 
     useEffect(() => {
@@ -80,7 +77,6 @@ export default function Board() {
         setWinner('')
         setNextPlayer('x')
         setFinalWinner('')
-        setDisabledButton(false)
     }
 
     function handleNextGame() {
