@@ -88,7 +88,7 @@ body {
     overflow: hidden;
 }
 
-.board-container{
+.board-container {
     min-height: 285px;
 }
 
@@ -120,6 +120,10 @@ body {
     align-items: center;
     transition-duration: 0.3s;
     text-transform: uppercase;
+}
+
+.win-bg {
+    background-color: rgb(9, 68, 1);
 }
 
 .cell:last-of-type {

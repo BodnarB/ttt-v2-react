@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Cell({ cellID, cellContent, handleClick }) {
+export default function Cell({ cellID, cellContent, handleClick, cellStyle }) {
     return (
-        <div data-id={cellID} onClick={handleClick} className='cell'>{cellContent}</div>
+        <div data-id={cellID} onClick={handleClick} className={`cell ${cellStyle}`}>{cellContent}</div>
     )
 }

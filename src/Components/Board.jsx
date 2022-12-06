@@ -14,6 +14,7 @@ export default function Board() {
     const [results, setResults] = useState([])
     const [finalWinner, setFinalWinner] = useState('')
     const [disabledButton, setDisabledButton] = useState(true)
+    const [cellStyle, setCellStyle] = useState(Array(9).fill(''))
 
     useEffect(() => {
         if (winner !== '' && winner !== '-') {
@@ -46,6 +47,11 @@ export default function Board() {
                         let matchX = xPositions.filter(element => winPostions[index].includes(element))
                         if (matchX.length === 3) {
                             setWinner('x')
+                            let newStyle = cellStyle
+                            matchX.forEach((item, index) => {
+                                newStyle[item] = 'win-bg'
+                            })
+                            setCellStyle(newStyle)
                         }
                     })
                 }
@@ -54,6 +60,11 @@ export default function Board() {
                         let matchO = OPositions.filter(element => winPostions[index].includes(element))
                         if (matchO.length === 3) {
                             setWinner('o')
+                            let newStyle = cellStyle
+                            matchO.forEach((item, index) => {
+                                newStyle[item] = 'win-bg'
+                            })
+                            setCellStyle(newStyle)
                         }
                     })
                 }
@@ -70,6 +81,7 @@ export default function Board() {
     }, [finalWinner])
 
     function handleNewGame() {
+        setCellStyle(Array(9).fill(''))
         setBoard(Array(9).fill(''))
         setXpositions([])
         setOpositions([])
@@ -80,6 +92,7 @@ export default function Board() {
     }
 
     function handleNextGame() {
+        setCellStyle(Array(9).fill(''))
         setBoard(Array(9).fill(''))
         setDisabledButton(true)
         setXpositions([])
@@ -119,19 +132,19 @@ export default function Board() {
             <div className='board-container'>
                 <div className='board'>
                     <Row handleClick={handleClick}
-                        cell1ID={0} cell1Content={board[0]}
-                        cell2ID={1} cell2Content={board[1]}
-                        cell3ID={2} cell3Content={board[2]}
+                        cell1ID={0} cell1Content={board[0]} cell1Style={cellStyle[0]}
+                        cell2ID={1} cell2Content={board[1]} cell2Style={cellStyle[1]}
+                        cell3ID={2} cell3Content={board[2]} cell3Style={cellStyle[2]}
                     />
                     <Row handleClick={handleClick}
-                        cell1ID={3} cell1Content={board[3]}
-                        cell2ID={4} cell2Content={board[4]}
-                        cell3ID={5} cell3Content={board[5]}
+                        cell1ID={3} cell1Content={board[3]} cell1Style={cellStyle[3]}
+                        cell2ID={4} cell2Content={board[4]} cell2Style={cellStyle[4]}
+                        cell3ID={5} cell3Content={board[5]} cell3Style={cellStyle[5]}
                     />
                     <Row handleClick={handleClick}
-                        cell1ID={6} cell1Content={board[6]}
-                        cell2ID={7} cell2Content={board[7]}
-                        cell3ID={8} cell3Content={board[8]}
+                        cell1ID={6} cell1Content={board[6]} cell1Style={cellStyle[6]}
+                        cell2ID={7} cell2Content={board[7]} cell2Style={cellStyle[7]}
+                        cell3ID={8} cell3Content={board[8]} cell3Style={cellStyle[8]}
                     />
                 </div>
                 {winner === '-' && <p className='winner'>No winner</p>}
