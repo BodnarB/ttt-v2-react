@@ -14,11 +14,14 @@ export default function Board() {
     const [winner, setWinner] = useState('')
     const [results, setResults] = useState([])
     const [finalWinner, setFinalWinner] = useState('')
-    const [disabledButton, setDisabledButton] = useState(false)
+    const [disabledButton, setDisabledButton] = useState(true)
 
     useEffect(() => {
         if (winner !== '' && winner !== '-') {
             setResults([...results, winner])
+        }
+        if (winner !== '') {
+            setDisabledButton(false)
         }
     }, [winner])
 
@@ -31,7 +34,9 @@ export default function Board() {
                 setFinalWinner('o')
             }
         }
-
+        if (results.length === 0) {
+            setDisabledButton(true)
+        }
     }, [results])
 
     useEffect(() => {
@@ -64,10 +69,10 @@ export default function Board() {
 
     useEffect(() => {
         if (finalWinner !== '') {
-            setDisabledButton(true)
             setNextPlayer('-')
+            setDisabledButton(true)
         }
-    },[finalWinner])
+    }, [finalWinner])
 
     function handleNewGame() {
         setBoard(Array(9).fill(''))
@@ -82,10 +87,10 @@ export default function Board() {
 
     function handleNextGame() {
         setBoard(Array(9).fill(''))
+        setDisabledButton(true)
         setXpositions([])
         setOpositions([])
         setWinner('')
-        setNextPlayer('x')
     }
 
     function handleClick(e) {
@@ -134,9 +139,8 @@ export default function Board() {
                     cell3ID={8} cell3Content={board[8]}
                 />
             </div>
-            {winner !== '' && <p className='winner'>Last round winner: {winner}</p>}
+            {winner === '-' && <p className='winner'>No winner</p>}
             {finalWinner !== '' && <p className='final-winner'>Final winner: {finalWinner}</p>}
-
         </>
     )
 }

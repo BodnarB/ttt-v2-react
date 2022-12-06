@@ -14,7 +14,9 @@ export default function Info({ nextPlayer, newGame, nextGame, games, results, di
                 <p className='results-p'>Results</p>
                 <div className='results-list'>{results}</div>
             </div>
-            <p className='next-player'>Next player: {nextPlayer}</p>
+            <div className='next-player'>
+                <p>Next player:</p><p> {nextPlayer}</p>
+            </div>
         </div >
     )
 }
