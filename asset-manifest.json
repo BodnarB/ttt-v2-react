@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ttt-v2-react/static/css/main.9cfa416b.css",
+    "main.js": "/ttt-v2-react/static/js/main.273d1f39.js",
+    "static/media/sun-tornado.svg": "/ttt-v2-react/static/media/sun-tornado.c7d85af20e88e152aaba.svg",
+    "index.html": "/ttt-v2-react/index.html",
+    "main.9cfa416b.css.map": "/ttt-v2-react/static/css/main.9cfa416b.css.map",
+    "main.273d1f39.js.map": "/ttt-v2-react/static/js/main.273d1f39.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9cfa416b.css",
+    "static/js/main.273d1f39.js"
+  ]
+}
