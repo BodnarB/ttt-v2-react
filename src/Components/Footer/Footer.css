@@ -1,0 +1,21 @@
+footer {
+    text-align: center;
+    background-color: #000000;
+    color: #ffffffbd;
+    padding: 1rem;
+    width: 100%;
+    font-weight: 300;
+    font-variant: small-caps;
+    font-size: 1.15rem;
+}
+
+.external-link {
+    color: inherit;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.external-link:hover {
+    color: white;
+    transition-duration: 0.1s;
+}

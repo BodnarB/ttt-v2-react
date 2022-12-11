@@ -1,0 +1,25 @@
+.cell {
+    border-right: 1px solid #b7ff42bd;
+    background-color: #121e26;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.3s;
+    text-transform: uppercase;
+}
+
+.win-bg {
+    background-color: #06780082;
+}
+
+.cell:last-of-type {
+    border: none;
+}
+
+.cell:hover {
+    background-color: #384855;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}

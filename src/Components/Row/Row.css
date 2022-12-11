@@ -1,0 +1,8 @@
+.row {
+    display: flex;
+    border-bottom: 1px solid #b7ff42bd;
+}
+
+.row:last-of-type {
+    border: none;
+}

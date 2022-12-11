@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Footer/Footer.css'
 
 export default function Footer() {
 
@@ -8,6 +9,6 @@ export default function Footer() {
         <footer>
             <p>Boglarka Bodnar &copy; {year}</p>
             <a className='external-link' target='blank' href='https://bodnarb.hu'>bodnarb.hu</a>
-            </footer>
+        </footer>
     )
 }

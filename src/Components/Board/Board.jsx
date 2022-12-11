@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Info from './Info'
-import Row from './Row'
+import Info from '../Info/Info'
+import Row from '../Row/Row'
+import '../Board/Board.css'
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Board() {
@@ -36,38 +37,35 @@ export default function Board() {
         }
     }, [results])
 
+    function checkPlayer(player) {
+        if (player.length >= 3) {
+            winPostions.forEach((item, index) => {
+                let match = player.filter(element => winPostions[index].includes(element))
+                if (match.length === 3) {
+                    if (player === xPositions) {
+                        setWinner('x')
+                    }
+                    else if (player === OPositions) {
+                        setWinner('o')
+                    }
+                    let newStyle = cellStyle
+                    match.forEach((item) => {
+                        newStyle[item] = 'win-bg'
+                    })
+                    setCellStyle(newStyle)
+                }
+            })
+        }
+    }
+
     useEffect(() => {
         function checkWinner() {
             if (finalWinner === '') {
                 if (!board.includes('')) {
                     setWinner('-')
                 }
-                if (xPositions.length >= 3) {
-                    winPostions.forEach((item, index) => {
-                        let matchX = xPositions.filter(element => winPostions[index].includes(element))
-                        if (matchX.length === 3) {
-                            setWinner('x')
-                            let newStyle = cellStyle
-                            matchX.forEach((item, index) => {
-                                newStyle[item] = 'win-bg'
-                            })
-                            setCellStyle(newStyle)
-                        }
-                    })
-                }
-                if (OPositions.length >= 3) {
-                    winPostions.forEach((item, index) => {
-                        let matchO = OPositions.filter(element => winPostions[index].includes(element))
-                        if (matchO.length === 3) {
-                            setWinner('o')
-                            let newStyle = cellStyle
-                            matchO.forEach((item, index) => {
-                                newStyle[item] = 'win-bg'
-                            })
-                            setCellStyle(newStyle)
-                        }
-                    })
-                }
+                checkPlayer(xPositions)
+                checkPlayer(OPositions)
             }
         }
         checkWinner()
@@ -119,6 +117,14 @@ export default function Board() {
         }
     }
 
+    const cells = [0, 1, 2].map(rowIndex =>
+        [0, 1, 2].map(colIndex => ({
+            cellID: rowIndex * 3 + colIndex,
+            cellContent: board[rowIndex * 3 + colIndex],
+            cellStyle: cellStyle[rowIndex * 3 + colIndex]
+        }))
+    )
+
     return (
         <>
             <Info
@@ -131,23 +137,11 @@ export default function Board() {
             />
             <div className='board-container'>
                 <div className='board'>
-                    <Row handleClick={handleClick}
-                        cell1ID={0} cell1Content={board[0]} cell1Style={cellStyle[0]}
-                        cell2ID={1} cell2Content={board[1]} cell2Style={cellStyle[1]}
-                        cell3ID={2} cell3Content={board[2]} cell3Style={cellStyle[2]}
-                    />
-                    <Row handleClick={handleClick}
-                        cell1ID={3} cell1Content={board[3]} cell1Style={cellStyle[3]}
-                        cell2ID={4} cell2Content={board[4]} cell2Style={cellStyle[4]}
-                        cell3ID={5} cell3Content={board[5]} cell3Style={cellStyle[5]}
-                    />
-                    <Row handleClick={handleClick}
-                        cell1ID={6} cell1Content={board[6]} cell1Style={cellStyle[6]}
-                        cell2ID={7} cell2Content={board[7]} cell2Style={cellStyle[7]}
-                        cell3ID={8} cell3Content={board[8]} cell3Style={cellStyle[8]}
-                    />
+                    <Row cells={cells[0]} handleClick={handleClick} />
+                    <Row cells={cells[1]} handleClick={handleClick} />
+                    <Row cells={cells[2]} handleClick={handleClick} />
                 </div>
-                {winner === '-' && <p className='winner'>No winner</p>}
+                {winner === '-' && <p className='winner'>There is no winner</p>}
                 {finalWinner !== '' && <p className='final-winner'>Final winner: {finalWinner}</p>}
             </div>
         </>

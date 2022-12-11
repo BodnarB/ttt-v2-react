@@ -1,6 +1,6 @@
 import './App.css';
-import Footer from './Components/Footer';
-import Board from './Components/Board';
+import Footer from './Components/Footer/Footer';
+import Board from './Components/Board/Board';
 
 function App() {
   return (

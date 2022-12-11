@@ -1,0 +1,116 @@
+h1 {
+    font-size: 1.9rem;
+}
+
+.info {
+    background-color: rgba(14, 14, 14, 0.514);
+    backdrop-filter: blur(6px);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem 1.5rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.game-info {
+    overflow: hidden;
+    border-radius: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #bdbdbd14;
+    font-weight: 300;
+    text-transform: uppercase;
+    width: 260px;
+}
+
+.best-of {
+    background-color: #B7FF42;
+    color: #000000;
+    font-weight: 500;
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.3rem 1rem;
+}
+
+.results-list {
+    padding-bottom: 0.3rem;
+    color: #B7FF42;
+    font-weight: 600;
+    width: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 0.2rem;
+    min-height: 29px;
+}
+
+.results-p {
+    padding-bottom: 0.15rem;
+    font-size: 1.1rem;
+}
+
+.btn-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.game-btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #131313;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.6rem 0.7rem;
+    border-radius: 2rem;
+    transition-duration: 0.2s;
+    border: 2px solid #b7ff42af;
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: 0 0 5px #ffffff4d;
+}
+
+.game-btn:disabled {
+    background-color: gray;
+    color: #1f1f1f;
+    border: 2px solid rgb(168, 168, 168);
+    box-shadow: none;
+}
+
+.game-btn:disabled:hover {
+    background-color: gray;
+    color: #000000;
+    padding: 0.6rem 0.7rem;
+    border-radius: 2rem;
+    cursor: default;
+}
+
+.next-game {
+    background-color: #052b08;
+    margin-bottom: 0.7rem;
+}
+
+.game-btn:hover {
+    background-color: rgb(15, 27, 5);
+    color: #ffffff;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    padding:  0.6rem 1.1rem;
+}
+
+.next-player {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    width: 145px;
+    border-radius: 0.15rem;
+    font-weight: 300;
+    color: #B7FF42;
+}
