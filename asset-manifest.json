@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ttt-v2-react/static/css/main.19f74be6.css",
-    "main.js": "/ttt-v2-react/static/js/main.671eaee7.js",
+    "main.js": "/ttt-v2-react/static/js/main.2f0da4ed.js",
     "static/media/sun-tornado.svg": "/ttt-v2-react/static/media/sun-tornado.c7d85af20e88e152aaba.svg",
     "index.html": "/ttt-v2-react/index.html",
     "main.19f74be6.css.map": "/ttt-v2-react/static/css/main.19f74be6.css.map",
-    "main.671eaee7.js.map": "/ttt-v2-react/static/js/main.671eaee7.js.map"
+    "main.2f0da4ed.js.map": "/ttt-v2-react/static/js/main.2f0da4ed.js.map"
   },
   "entrypoints": [
     "static/css/main.19f74be6.css",
-    "static/js/main.671eaee7.js"
+    "static/js/main.2f0da4ed.js"
   ]
 }
